@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block titlepage %} Sistema de Asignación de Plazas{% endblock %}
+{% block content%}
+	{% csrf_token %}
+	<div class="table-responsive">
+		<table class="table table-bordered table-hover table-borderless">
+			<caption>Listado de Instituciones</caption>
+			<thead class="thead-dark">
+				<tr>
+					<th >C.C.T.</th>
+					<th >Escuela</th>
+					<th >Nivel Educativo</th>
+					<th >Turno</th>
+					<th >Zona Escolar</th>
+					<th >Sector</th>
+					<th >C.P.</th>
+					<th >Opciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for ct in list_cts %}
+				<tr>
+					<th scope="row">{{ ct.clave_ct }}</th>
+					<td>{{ ct.nombre_ct }}</td>
+					<td>{{ ct.nivel_educ }}</td>
+					<td>{{ ct.turno }}</td>
+					<td>{{ ct.zona_esc }}</td>
+					<td>{{ ct.sector }}</td>
+					<td>{{ ct.cp }}</td>
+					<td>
+						<a href="" title="Ver detalles..."><i class="fas fa-eye"> </i></a>
+						<a href="" title="Editar"><i class="fas fa-pencil-alt"> </i></a>
+						<a href="" title="Eliminar"><i class="fas fa-trash-alt"> </i></a>
+  					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+			<tfoot >
+				<tr class="table-success">
+					<td colspan="8">Listado de Instituciones registradas en Base de Datos</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+{% endblock %}

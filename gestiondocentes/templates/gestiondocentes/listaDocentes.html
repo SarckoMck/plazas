@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block titlepage %} Sistema de Asignación de Plazas{% endblock %}
+{% block content%}
+	{% csrf_token %}
+	<div class="table-responsive">
+		<table class="table table-bordered table-hover table-borderless">
+			<caption>Listado de Docentes</caption>
+			<thead class="thead-dark">
+				<tr>
+					<th >CURP</th>
+					<th >Nombre(s)</th>
+					<th >Apellido Paterno</th>
+					<th >Apellido Materno</th>
+					<th >RFC</th>
+					<th >teléfono móvil</th>
+					<th >eMail</th>
+					<th >Opciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for docente in list_docs %}
+				<tr>
+					<th scope="row">{{ docente.curp }}</th>
+					<td>{{ docente.nombre }}</td>
+					<td>{{ docente.apaterno }}</td>
+					<td>{{ docente.amaterno }}</td>
+					<td>{{ docente.rfc }}</td>
+					<td>{{ docente.tel_cel }}</td>
+					<td>{{ docente.e_mail }}</td>
+					<td>
+						<a href="" title="Ver detalles..."><i class="fas fa-eye"> </i></a>
+						<a href="" title="Editar"><i class="fas fa-pencil-alt"> </i></a>
+						<a href="" title="Eliminar"><i class="fas fa-trash-alt"> </i></a>
+  					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+			<tfoot >
+				<tr class="table-success">
+					<td colspan="8">Listado de Docentes registrados en Base de Datos</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+{% endblock %}
